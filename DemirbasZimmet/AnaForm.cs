@@ -87,7 +87,7 @@ namespace DemirbasZimmet
             #region BolumDetay
 
             con.Open();
-            SqlCommand cmd = new SqlCommand($"Select BölümAdı,Telefon,Faks,AdresKodu from Bölüm where BölümKodu ={com}",con);
+            SqlCommand cmd = new SqlCommand($"Select BölümAdı,Telefon,Faks,AdresKodu from Bölüm where BölümKodu ={com}", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -195,7 +195,7 @@ namespace DemirbasZimmet
 
             con.Open();
             SqlCommand cmd = new SqlCommand($"select DemirbaşKodu,DemirbaşAdı,BölümKodu from Demirbaş where MalzemeKodu={com} and DemirbaşDurumu='true'", con);
-            SqlDataAdapter da= new SqlDataAdapter(cmd);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
             dgvDemirbas.DataSource = dt;
@@ -211,6 +211,29 @@ namespace DemirbasZimmet
             var frm = new YeniPersonel();
             frm.ShowDialog();
             PersonelComboBox();
+        }
+
+        private void dgvZimmetListesi_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var DemirbasKodu = dgvZimmetListesi.SelectedRows[0].Cells[3].Value;
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select SicilNo,BaşlangıcTarihi,BitisTarihi from DemirbasZimmetleme where DemirbasKodu =" + DemirbasKodu, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            Zimmet zimmet = new Zimmet();
+            while (dr.Read())
+            {
+                zimmet = new Zimmet()
+                {
+                    SicilNo = (int)dr[0],
+                    BaslangicTarihi = (DateTime)dr[1],
+                    BitisTarihi = (DateTime)dr[2]
+                };
+            }
+            con.Close();
+            dr.Close();
+            var frm = new ZimmetDüzenleSil(zimmet);
+            frm.ShowDialog();
+            
         }
     }
 }

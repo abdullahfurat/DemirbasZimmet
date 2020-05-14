@@ -110,6 +110,7 @@
             this.dgvZimmetListesi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvZimmetListesi.Size = new System.Drawing.Size(628, 409);
             this.dgvZimmetListesi.TabIndex = 0;
+            this.dgvZimmetListesi.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvZimmetListesi_MouseDoubleClick);
             // 
             // tabPage4
             // 
