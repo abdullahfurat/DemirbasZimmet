@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,12 @@ namespace DemirbasZimmet
         public ZimmetDüzenleSil(Zimmet zimmet)
         {
             InitializeComponent();
-            Zimmet duzenle = new Zimmet();
-            duzenle.SicilNo = zimmet.SicilNo;
-            duzenle.BaslangicTarihi = zimmet.BaslangicTarihi;
-            duzenle.BitisTarihi = zimmet.BitisTarihi;
-            label3.Text = duzenle.SicilNo.ToString();
+            txtSicilNo.Text = zimmet.SicilNo.ToString();
+            dtpBaslangic.Value = Convert.ToDateTime(zimmet.BaslangicTarihi);
+            dtpBitis.Value = Convert.ToDateTime(zimmet.BitisTarihi);
+            dtpBaslangic.Enabled = false;
+            dtpBitis.Enabled = false;
         }
+
     }
 }

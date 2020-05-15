@@ -216,24 +216,31 @@ namespace DemirbasZimmet
         private void dgvZimmetListesi_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var DemirbasKodu = dgvZimmetListesi.SelectedRows[0].Cells[3].Value;
+            var Baslangıc = dgvZimmetListesi.SelectedRows[0].Cells[4].Value;
             con.Open();
-            SqlCommand cmd = new SqlCommand("select SicilNo,BaşlangıcTarihi,BitisTarihi from DemirbasZimmetleme where DemirbasKodu =" + DemirbasKodu, con);
+            SqlCommand cmd = new SqlCommand("select SicilNo,BaşlangıcTarihi,BitisTarihi from DemirbasZimmetleme where DemirbasKodu =@p1 and BaşlangıcTarihi = @p2", con);
+            cmd.Parameters.AddWithValue("@p1", DemirbasKodu);
+            cmd.Parameters.AddWithValue("@p2", Baslangıc);
             SqlDataReader dr = cmd.ExecuteReader();
             Zimmet zimmet = new Zimmet();
-            while (dr.Read())
+            dr.Read();
+
+            DateTime bitis = DateTime.Now;
+            if (dr[2] is DateTime)
             {
-                zimmet = new Zimmet()
-                {
-                    SicilNo = (int)dr[0],
-                    BaslangicTarihi = (DateTime)dr[1],
-                    BitisTarihi = (DateTime)dr[2]
-                };
+                bitis = (DateTime)dr[2];
             }
+            zimmet = new Zimmet()
+            {
+                SicilNo = (int)dr[0],
+                BaslangicTarihi = (DateTime)dr[1],
+                BitisTarihi = bitis
+            };
             con.Close();
             dr.Close();
             var frm = new ZimmetDüzenleSil(zimmet);
             frm.ShowDialog();
-            
+
         }
     }
 }
