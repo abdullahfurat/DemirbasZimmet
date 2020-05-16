@@ -30,6 +30,8 @@ namespace DemirbasZimmet
             dr.Close();
             #endregion
 
+            
+
             PersonelComboBox();
 
             #region DEMİRBAŞ Combobox
@@ -45,26 +47,17 @@ namespace DemirbasZimmet
             #endregion
 
             #region MALZEME ComboBox
-            con.Open();
-            SqlCommand cmd1 = new SqlCommand($"Select MalzemeKodu,MalzemeAdı,MalzemeTürü,Adet from Malzeme", con);
-            SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
-            DataTable dt1 = new DataTable();
-            da1.Fill(dt1);
-            dgvMalzeme.DataSource = dt1;
-            con.Close();
+            dgvMalzeme.DataSource = Veritabani.SELECTCalistir("Select MalzemeKodu,MalzemeAdı,MalzemeTürü,Adet from Malzeme");
             #endregion
 
-            #region ZİMMET DataGridView
-            con.Open();
-            SqlCommand cmd5 = new SqlCommand("select Unvan,PersonelAdı,PersonelSoyadı,DemirbasKodu,BaşlangıcTarihi,BitisTarihi from DemirbasZimmetleme inner join Personel on Personel.SicilNumarası =  DemirbasZimmetleme.SicilNo ", con);
-            SqlDataAdapter da5 = new SqlDataAdapter(cmd5);
-            DataTable dt5 = new DataTable();
-            da5.Fill(dt5);
-            dgvZimmetListesi.DataSource = dt5;
-            con.Close();
-            #endregion
+            ZimmetDataGridView();
 
 
+        }
+
+        public void ZimmetDataGridView()
+        {
+            dgvZimmetListesi.DataSource = Veritabani.SELECTCalistir("select Unvan,PersonelAdı,PersonelSoyadı,DemirbasKodu,BaşlangıcTarihi,BitisTarihi from DemirbasZimmetleme inner join Personel on Personel.SicilNumarası =  DemirbasZimmetleme.SicilNo ");
         }
 
         private void PersonelComboBox()
@@ -86,49 +79,25 @@ namespace DemirbasZimmet
             var com = $"'{secilen}'";
             #region BolumDetay
 
-            con.Open();
-            SqlCommand cmd = new SqlCommand($"Select BölümAdı,Telefon,Faks,AdresKodu from Bölüm where BölümKodu ={com}", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgvBolumDetay.DataSource = dt;
-            con.Close();
+            dgvBolumDetay.DataSource = Veritabani.SELECTCalistir($"Select BölümAdı,Telefon,Faks,AdresKodu from Bölüm where BölümKodu ={com}");
 
             #endregion
 
             #region BolumPersonelDetay
 
-            con.Open();
-            SqlCommand cmd1 = new SqlCommand($"Select Unvan,PersonelAdı,PersonelSoyadı,SicilNumarası from Personel where BölümKodu ={com}", con);
-            SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
-            DataTable dt1 = new DataTable();
-            da1.Fill(dt1);
-            dgvBolumPersonel.DataSource = dt1;
-            con.Close();
+            dgvBolumPersonel.DataSource = Veritabani.SELECTCalistir($"Select Unvan,PersonelAdı,PersonelSoyadı,SicilNumarası from Personel where BölümKodu ={com}");
 
             #endregion
 
             #region BolumDemirbas
 
-            con.Open();
-            SqlCommand cmd2 = new SqlCommand($"Select DemirbaşKodu,DemirbaşAdı from Demirbaş where BölümKodu ={com}", con);
-            SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
-            DataTable dt2 = new DataTable();
-            da2.Fill(dt2);
-            dgvBolumDemirbas.DataSource = dt2;
-            con.Close();
+            dgvBolumDemirbas.DataSource = Veritabani.SELECTCalistir($"Select DemirbaşKodu,DemirbaşAdı from Demirbaş where BölümKodu ={com}");
 
             #endregion
 
             #region BolumAdres
 
-            con.Open();
-            SqlCommand cmd3 = new SqlCommand($"Select Mahalle,Sokak,KapıNo,İlçe,Şehir from AdresBilgisi where AdresKodu =(Select AdresKodu from Bölüm where BölümKodu ={com})", con);
-            SqlDataAdapter da3 = new SqlDataAdapter(cmd3);
-            DataTable dt3 = new DataTable();
-            da3.Fill(dt3);
-            dgvAdres.DataSource = dt3;
-            con.Close();
+            dgvAdres.DataSource = Veritabani.SELECTCalistir($"Select Mahalle,Sokak,KapıNo,İlçe,Şehir from AdresBilgisi where AdresKodu =(Select AdresKodu from Bölüm where BölümKodu ={com})");
 
             #endregion
         }
@@ -139,13 +108,7 @@ namespace DemirbasZimmet
             var com = $"'{secilen}'";
             #region PersonelDetayTelefon
 
-            con.Open();
-            SqlCommand cmd = new SqlCommand($"Select Telefon from [Personel-Telefon] where SicilNumarası ={com}", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgvPersonelDetayTel.DataSource = dt;
-            con.Close();
+            dgvPersonelDetayTel.DataSource = Veritabani.SELECTCalistir($"Select Telefon from [Personel-Telefon] where SicilNumarası ={com}");
 
             #endregion
 
@@ -193,13 +156,7 @@ namespace DemirbasZimmet
 
             #region Demirbas
 
-            con.Open();
-            SqlCommand cmd = new SqlCommand($"select DemirbaşKodu,DemirbaşAdı,BölümKodu from Demirbaş where MalzemeKodu={com} and DemirbaşDurumu='true'", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgvDemirbas.DataSource = dt;
-            con.Close();
+            dgvDemirbas.DataSource = Veritabani.SELECTCalistir($"select DemirbaşKodu,DemirbaşAdı,BölümKodu from Demirbaş where MalzemeKodu={com} and DemirbaşDurumu='true'");
 
             #endregion
         }
@@ -234,13 +191,20 @@ namespace DemirbasZimmet
             {
                 SicilNo = (int)dr[0],
                 BaslangicTarihi = (DateTime)dr[1],
-                BitisTarihi = bitis
+                BitisTarihi = bitis,
+                DemirbasKodu = DemirbasKodu.ToString()
             };
             con.Close();
             dr.Close();
             var frm = new ZimmetDüzenleSil(zimmet);
             frm.ShowDialog();
+            ZimmetDataGridView();
 
+        }
+
+        private void btnIptal_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

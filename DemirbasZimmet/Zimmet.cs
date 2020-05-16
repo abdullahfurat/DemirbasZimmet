@@ -12,7 +12,9 @@ namespace DemirbasZimmet
 
         public DateTime BaslangicTarihi { get; set; }
 
-        public DateTime? BitisTarihi { get; set; }
+        public DateTime BitisTarihi { get; set; }
+
+        public string DemirbasKodu { get; set; }
 
     }
 }
