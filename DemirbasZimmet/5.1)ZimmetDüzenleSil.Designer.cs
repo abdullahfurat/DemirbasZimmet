@@ -34,17 +34,17 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtpBitis = new System.Windows.Forms.DateTimePicker();
             this.dtpBaslangic = new System.Windows.Forms.DateTimePicker();
+            this.btnSil = new System.Windows.Forms.Button();
             this.txtSicilNo = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnDuzenle = new System.Windows.Forms.Button();
-            this.btnSil = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.mtxtSicilNo = new System.Windows.Forms.MaskedTextBox();
             this.dtpBaslangıcTarihi = new System.Windows.Forms.DateTimePicker();
             this.dtpBitisTarihi = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.mtxtSicilNo = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -106,6 +106,16 @@
             this.dtpBaslangic.Size = new System.Drawing.Size(153, 20);
             this.dtpBaslangic.TabIndex = 0;
             // 
+            // btnSil
+            // 
+            this.btnSil.Location = new System.Drawing.Point(98, 133);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(84, 23);
+            this.btnSil.TabIndex = 11;
+            this.btnSil.Text = "SİL";
+            this.btnSil.UseVisualStyleBackColor = true;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
+            // 
             // txtSicilNo
             // 
             this.txtSicilNo.Location = new System.Drawing.Point(119, 28);
@@ -124,16 +134,6 @@
             this.btnDuzenle.UseVisualStyleBackColor = true;
             this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
             // 
-            // btnSil
-            // 
-            this.btnSil.Location = new System.Drawing.Point(98, 133);
-            this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(84, 23);
-            this.btnSil.TabIndex = 11;
-            this.btnSil.Text = "SİL";
-            this.btnSil.UseVisualStyleBackColor = true;
-            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.mtxtSicilNo);
@@ -149,6 +149,15 @@
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Zimmet Düzenle ";
+            // 
+            // mtxtSicilNo
+            // 
+            this.mtxtSicilNo.Location = new System.Drawing.Point(119, 28);
+            this.mtxtSicilNo.Mask = "00000000";
+            this.mtxtSicilNo.Name = "mtxtSicilNo";
+            this.mtxtSicilNo.Size = new System.Drawing.Size(100, 20);
+            this.mtxtSicilNo.TabIndex = 12;
+            this.mtxtSicilNo.ValidatingType = typeof(int);
             // 
             // dtpBaslangıcTarihi
             // 
@@ -191,15 +200,6 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Bitiş Tairihi :";
             // 
-            // mtxtSicilNo
-            // 
-            this.mtxtSicilNo.Location = new System.Drawing.Point(119, 28);
-            this.mtxtSicilNo.Mask = "00000000";
-            this.mtxtSicilNo.Name = "mtxtSicilNo";
-            this.mtxtSicilNo.Size = new System.Drawing.Size(100, 20);
-            this.mtxtSicilNo.TabIndex = 12;
-            this.mtxtSicilNo.ValidatingType = typeof(int);
-            // 
             // ZimmetDüzenleSil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,6 +208,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "ZimmetDüzenleSil";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Zimmet Düzenle Sil";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

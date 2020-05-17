@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,45 +33,41 @@ namespace DemirbasZimmet
             dr4.Close();
             #endregion
 
-            #region Mevcut Personel SicilNo
+
+            #region PERSONEL AdresComboBox
+            SqlCommand cmd = new SqlCommand("Select AdresKodu from AdresBilgisi", con);
             con.Open();
-            SqlCommand cmd = new SqlCommand("Select SicilNumarası from Personel", con);
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                kisiler.Add(dr[0].ToString());
+                cmbAdresKodu.Items.Add(dr[0]);
             }
             con.Close();
             dr.Close();
             #endregion
+
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            if (kisiler.Contains(mtxtSicil.Text))
-            {
-                MessageBox.Show("Bu Sicil Numarasıyla sisteme kayıtlı başka bir kullanıcı bulunmaktadır.");
-                return;
-            }
-            con.Open();
-            SqlCommand cmd = new SqlCommand("insert into Personel values(@p1,@p2,@p3,@p4,@p5,@p6)", con);
-            cmd.Parameters.AddWithValue("@p1", mtxtSicil.Text);
-            cmd.Parameters.AddWithValue("@p2", txtAd.Text);
-            cmd.Parameters.AddWithValue("@p3", txtSoyad.Text);
-            cmd.Parameters.AddWithValue("@p4", txtUnvan.Text);
-            cmd.Parameters.AddWithValue("@p5", cmbBolumKod.SelectedItem);
-            cmd.Parameters.AddWithValue("@p6", txtAdresKod.Text);
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Personel Eklenmiştir");
-            mtxtSicil.Clear();
-            txtAd.Clear();
-            txtSoyad.Clear();
-            txtUnvan.Clear();
-            cmbBolumKod.SelectedIndex = 0;
-            txtAdresKod.Clear();
-            con.Close();
+            PersonelOlustur(mtxtSicil.Text,txtAd.Text,txtSoyad.Text,txtUnvan.Text,cmbBolumKod.Text,cmbAdresKodu.Text);
+            this.Close();
+        }
 
-            Close();
+        public bool PersonelOlustur(string SicilNo, string Ad, string Soyad, string Unvan, string BolumKodu, string AdresKodu)
+        {
+            if (MessageBox.Show("Personel kaydı oluşturulacaktır. Emin misiniz?", "Onayla", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return false;
+
+            ArrayList parametreler = new ArrayList();
+            parametreler.Add(new DictionaryEntry("SicilNumarasi", SicilNo));
+            parametreler.Add(new DictionaryEntry("PersonelAdi", Ad));
+            parametreler.Add(new DictionaryEntry("PersonelSoyadi", Soyad));
+            parametreler.Add(new DictionaryEntry("Unvan", Unvan));
+            parametreler.Add(new DictionaryEntry("BolumKodu", BolumKodu));
+            parametreler.Add(new DictionaryEntry("AdresKodu", AdresKodu));
+
+            return (Veritabani.ProsedurCalistir_MesajDegerlendir("PersonelOlustur", parametreler));
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -205,6 +206,207 @@ namespace DemirbasZimmet
         private void btnIptal_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnOlustur_Click(object sender, EventArgs e)
+        {
+            ZimmetOlustur(mtxtsicilOlustur.Text, txtDemirbasOlustur.Text, dtpBaslangicOlustur.Value, dtpBitisOlustur.Value);
+            ZimmetDataGridView();
+        }
+
+        public bool ZimmetOlustur(string ZimmetSicilNo, string ZimmetDemirbasKodu, DateTime Baslangic,DateTime Bitis)
+        {
+            if (MessageBox.Show("Zimmetleme kaydı oluşturulacaktır. Emin misiniz?", "Onayla", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return false;
+
+            ArrayList parametreler = new ArrayList();
+            parametreler.Add(new DictionaryEntry("SicilNo", ZimmetSicilNo));
+            parametreler.Add(new DictionaryEntry("DemirbasKodu", ZimmetDemirbasKodu));
+            parametreler.Add(new DictionaryEntry("BaslangicTarihi", Baslangic));
+            parametreler.Add(new DictionaryEntry("BitisTarihi", Bitis));
+
+            return (Veritabani.ProsedurCalistir_MesajDegerlendir("DemirbasZimmetOlustur", parametreler));
+        }
+
+        private void btnYeniMalzeme_Click(object sender, EventArgs e)
+        {
+            var frm = new YeniMalzeme();
+            frm.ShowDialog();
+            #region MALZEME DataGridView
+            dgvMalzeme.DataSource = Veritabani.SELECTCalistir("Select MalzemeKodu,MalzemeAdı,MalzemeTürü,Adet from Malzeme");
+            #endregion
+        }
+
+        private void dgvMalzeme_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            string _MalzemeKodu = (string)dgvMalzeme.SelectedRows[0].Cells[0].Value;
+            string _MalzemeAdi = (string)dgvMalzeme.SelectedRows[0].Cells[1].Value;
+            string _MalzemTuru = (string)dgvMalzeme.SelectedRows[0].Cells[2].Value;
+            int _Adet = (int)dgvMalzeme.SelectedRows[0].Cells[3].Value;
+
+            Malzeme malzeme = new Malzeme
+            {
+                MalzemeAdi = _MalzemeAdi,
+                MalzemeKodu = _MalzemeKodu,
+                MalzemeTuru = _MalzemTuru,
+                Adet = _Adet
+            };
+            var frm = new MalzemeDuzenleSil(malzeme);
+            frm.ShowDialog();
+            #region MALZEME DataGridView
+            dgvMalzeme.DataSource = Veritabani.SELECTCalistir("Select MalzemeKodu,MalzemeAdı,MalzemeTürü,Adet from Malzeme");
+            #endregion
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var frm = new YeniBölüm();
+            frm.ShowDialog();
+            #region BÖLÜM Combobox
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Select BölümKodu from Bölüm", con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                cmbBolum.Items.Add(dr[0]);
+            }
+            con.Close();
+            dr.Close();
+            #endregion
+        }
+
+        private void btnYeniBolum_Click(object sender, EventArgs e)
+        {
+            var frm = new YeniBölüm();
+            frm.ShowDialog();
+
+            #region BÖLÜM Combobox
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Select BölümKodu from Bölüm", con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                cmbBolum.Items.Add(dr[0]);
+            }
+            con.Close();
+            dr.Close();
+            #endregion
+
+        }
+
+        private void btnBolumSilDuzenle_Click(object sender, EventArgs e)
+        {
+            if (cmbBolum.SelectedItem == null)
+            {
+                MessageBox.Show("Lütfen bir bölüm seçiniz.");
+                return;
+            }
+            string BolumKodu = cmbBolum.SelectedItem.ToString();
+            var tamKod = "'" + BolumKodu + "'";
+            con.Open();;
+            SqlCommand cmd = new SqlCommand("Select BölümAdı,Telefon,Faks,AdresKodu from Bölüm where BölümKodu =" +tamKod, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            Bölüm bölüm = new Bölüm();
+            while (dr.Read())
+            {
+                 bölüm = new Bölüm
+                {
+                    BolumKodu=BolumKodu,
+                    BolumAdi=dr[0].ToString(),
+                    Telefon=dr[1].ToString(),
+                    Faks=dr[2].ToString(),
+                    AdresKodu=(int)dr[3]
+                };
+            }
+            con.Close();
+            dr.Close();
+
+            var frm = new BölümDüzenleSil(bölüm);
+            frm.ShowDialog();
+            cmbBolum.SelectedIndex = 0;
+            #region BÖLÜM Combobox
+            con.Open();
+            SqlCommand cmd1 = new SqlCommand("Select BölümKodu from Bölüm", con);
+            SqlDataReader dr1 = cmd1.ExecuteReader();
+            while (dr1.Read())
+            {
+                cmbBolum.Items.Add(dr1[0]);
+            }
+            con.Close();
+            dr1.Close();
+            #endregion
+        }
+
+        private void btnPersonelSil_Click_1(object sender, EventArgs e)
+        {
+            if (cmbSicilNo.SelectedItem == null)
+            {
+                MessageBox.Show("Lütfen sicil numarası seçiniz.");
+                return;
+            }
+            var SicilNo = cmbSicilNo.SelectedItem.ToString();
+            var tamNo = "'" + SicilNo + "'";
+            con.Open(); ;
+            SqlCommand cmd = new SqlCommand("Select PersonelAdı,PersonelSoyadı,Unvan,BölümKodu,AdresKodu from Personel where SicilNumarası =" + tamNo, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            Personel personel = new Personel();
+            while (dr.Read())
+            {
+                personel = new Personel
+                {
+                    Sicilnumarasi = SicilNo,
+                    PersonelAdi = dr[0].ToString(),
+                    PersonelSoyadi = dr[1].ToString(),
+                    Unvan = dr[2].ToString(),
+                    BolumKodu = dr[3].ToString(),
+                    AdresKodu=dr[4].ToString()
+                };
+            }
+            con.Close();
+            dr.Close();
+
+            var frm = new PersonelSildüzenle(personel);
+            frm.ShowDialog();
+            cmbSicilNo.Items.Clear();
+            PersonelComboBox();
+        }
+
+        private void btnYeniDemirbasOlustur_Click(object sender, EventArgs e)
+        {
+            var frm = new YeniDemirbas();
+            frm.ShowDialog();
+
+            #region Demirbas
+            var secilen = cmbMalzemeKodu.SelectedItem;
+            var com = $"'{secilen}'";
+            dgvDemirbas.DataSource = Veritabani.SELECTCalistir($"select DemirbaşKodu,DemirbaşAdı,BölümKodu from Demirbaş where MalzemeKodu={com} and DemirbaşDurumu='true'");
+
+            #endregion
+        }
+
+        private void dgvDemirbas_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            string _DemirbasAdi = (string)dgvDemirbas.SelectedRows[0].Cells[1].Value;
+            string _DemirbasKodu = (string)dgvDemirbas.SelectedRows[0].Cells[0].Value;
+            string _BolumKodu = (string)dgvDemirbas.SelectedRows[0].Cells[2].Value;
+            string _MalzemeKodu = (string)cmbMalzemeKodu.SelectedItem;
+
+            Demirbas demirbas = new Demirbas
+            {
+                DemirbasAdi = _DemirbasAdi,
+                DemirbasKodu =_DemirbasKodu,
+                BolumKodu =_BolumKodu,
+                MalzemeKodu =_MalzemeKodu
+            };
+            var frm = new DemirbasSilDüzenle(demirbas);
+            frm.ShowDialog();
+
+            #region Demirbas
+            var secilen = cmbMalzemeKodu.SelectedItem;
+            var com = $"'{secilen}'";
+            dgvDemirbas.DataSource = Veritabani.SELECTCalistir($"select DemirbaşKodu,DemirbaşAdı,BölümKodu from Demirbaş where MalzemeKodu={com} and DemirbaşDurumu='true'");
+
+            #endregion
         }
     }
 }

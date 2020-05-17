@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbAdresKodu = new System.Windows.Forms.ComboBox();
             this.cmbBolumKod = new System.Windows.Forms.ComboBox();
             this.btnEkle = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtAdresKod = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtUnvan = new System.Windows.Forms.TextBox();
@@ -47,10 +47,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbAdresKodu);
             this.groupBox1.Controls.Add(this.cmbBolumKod);
             this.groupBox1.Controls.Add(this.btnEkle);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtAdresKod);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtUnvan);
@@ -66,6 +66,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Personel Ekle";
+            // 
+            // cmbAdresKodu
+            // 
+            this.cmbAdresKodu.FormattingEnabled = true;
+            this.cmbAdresKodu.Location = new System.Drawing.Point(455, 79);
+            this.cmbAdresKodu.Name = "cmbAdresKodu";
+            this.cmbAdresKodu.Size = new System.Drawing.Size(100, 21);
+            this.cmbAdresKodu.TabIndex = 12;
             // 
             // cmbBolumKod
             // 
@@ -93,13 +101,6 @@
             this.label8.Size = new System.Drawing.Size(65, 13);
             this.label8.TabIndex = 11;
             this.label8.Text = "Adres Kodu:";
-            // 
-            // txtAdresKod
-            // 
-            this.txtAdresKod.Location = new System.Drawing.Point(455, 79);
-            this.txtAdresKod.Name = "txtAdresKod";
-            this.txtAdresKod.Size = new System.Drawing.Size(100, 20);
-            this.txtAdresKod.TabIndex = 5;
             // 
             // label9
             // 
@@ -183,6 +184,7 @@
             this.ClientSize = new System.Drawing.Size(667, 175);
             this.Controls.Add(this.groupBox1);
             this.Name = "YeniPersonel";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Yeni Personel";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -196,7 +198,6 @@
         private System.Windows.Forms.ComboBox cmbBolumKod;
         private System.Windows.Forms.Button btnEkle;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtAdresKod;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtUnvan;
@@ -206,5 +207,6 @@
         private System.Windows.Forms.TextBox txtAd;
         private System.Windows.Forms.MaskedTextBox mtxtSicil;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbAdresKodu;
     }
 }

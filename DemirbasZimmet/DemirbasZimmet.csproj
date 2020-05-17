@@ -46,30 +46,88 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1%29Bölüm.cs" />
     <Compile Include="AnaForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AnaForm.Designer.cs">
       <DependentUpon>AnaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="3%29Malzeme.cs" />
+    <Compile Include="3.2%29MalzemeDuzenleSil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3.2%29MalzemeDuzenleSil.Designer.cs">
+      <DependentUpon>3.2%29MalzemeDuzenleSil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="1.2%29BölümDüzenleSil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="1.2%29BölümDüzenleSil.Designer.cs">
+      <DependentUpon>1.2%29BölümDüzenleSil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="2%29 Personel.cs" />
+    <Compile Include="4%29 Demirbas.cs" />
+    <Compile Include="2.2%29 PersonelSildüzenle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="2.2%29 PersonelSildüzenle.Designer.cs">
+      <DependentUpon>2.2%29 PersonelSildüzenle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4.2%29 DemirbasSilDüzenle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4.2%29 DemirbasSilDüzenle.Designer.cs">
+      <DependentUpon>4.2%29 DemirbasSilDüzenle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Veritabani.cs" />
-    <Compile Include="YeniPersonel.cs">
+    <Compile Include="3.1%29YeniMalzeme.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="YeniPersonel.Designer.cs">
-      <DependentUpon>YeniPersonel.cs</DependentUpon>
+    <Compile Include="3.1%29YeniMalzeme.Designer.cs">
+      <DependentUpon>3.1%29YeniMalzeme.cs</DependentUpon>
     </Compile>
-    <Compile Include="Zimmet.cs" />
-    <Compile Include="ZimmetDüzenleSil.cs">
+    <Compile Include="2.1%29 YeniPersonel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ZimmetDüzenleSil.Designer.cs">
-      <DependentUpon>ZimmetDüzenleSil.cs</DependentUpon>
+    <Compile Include="2.1%29 YeniPersonel.Designer.cs">
+      <DependentUpon>2.1%29 YeniPersonel.cs</DependentUpon>
     </Compile>
+    <Compile Include="5%29Zimmet.cs" />
+    <Compile Include="5.1%29ZimmetDüzenleSil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="5.1%29ZimmetDüzenleSil.Designer.cs">
+      <DependentUpon>5.1%29ZimmetDüzenleSil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="1.1%29YeniBölüm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="1.1%29YeniBölüm.Designer.cs">
+      <DependentUpon>1.1%29YeniBölüm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4.1%29 YeniDemirbas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4.1%29 YeniDemirbas.Designer.cs">
+      <DependentUpon>4.1%29 YeniDemirbas.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="1.2%29BölümDüzenleSil.resx">
+      <DependentUpon>1.2%29BölümDüzenleSil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4.2%29 DemirbasSilDüzenle.resx">
+      <DependentUpon>4.2%29 DemirbasSilDüzenle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AnaForm.resx">
       <DependentUpon>AnaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3.2%29MalzemeDuzenleSil.resx">
+      <DependentUpon>3.2%29MalzemeDuzenleSil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="2.2%29 PersonelSildüzenle.resx">
+      <DependentUpon>2.2%29 PersonelSildüzenle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -80,11 +138,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="YeniPersonel.resx">
-      <DependentUpon>YeniPersonel.cs</DependentUpon>
+    <EmbeddedResource Include="3.1%29YeniMalzeme.resx">
+      <DependentUpon>3.1%29YeniMalzeme.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ZimmetDüzenleSil.resx">
-      <DependentUpon>ZimmetDüzenleSil.cs</DependentUpon>
+    <EmbeddedResource Include="2.1%29 YeniPersonel.resx">
+      <DependentUpon>2.1%29 YeniPersonel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="5.1%29ZimmetDüzenleSil.resx">
+      <DependentUpon>5.1%29ZimmetDüzenleSil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="1.1%29YeniBölüm.resx">
+      <DependentUpon>1.1%29YeniBölüm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="4.1%29 YeniDemirbas.resx">
+      <DependentUpon>4.1%29 YeniDemirbas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

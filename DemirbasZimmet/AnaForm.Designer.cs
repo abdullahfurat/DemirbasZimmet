@@ -28,16 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.dgvZimmetListesi = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnYeniDemirbasOlustur = new System.Windows.Forms.Button();
             this.dgvDemirbas = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbMalzemeKodu = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnYeniMalzeme = new System.Windows.Forms.Button();
             this.dgvMalzeme = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnPersonelSil = new System.Windows.Forms.Button();
             this.btnYeniPersonel = new System.Windows.Forms.Button();
             this.dgvPersonelZimmet = new System.Windows.Forms.DataGridView();
             this.dgvPersonelDetayBilgi = new System.Windows.Forms.DataGridView();
@@ -46,6 +49,8 @@
             this.cmbSicilNo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnBolumSilDuzenle = new System.Windows.Forms.Button();
+            this.btnYeniBolum = new System.Windows.Forms.Button();
             this.dgvAdres = new System.Windows.Forms.DataGridView();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,15 +74,16 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDemirbasOlustur = new System.Windows.Forms.TextBox();
+            this.mtxtsicilOlustur = new System.Windows.Forms.MaskedTextBox();
+            this.btnIptal = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.dtpBitisOlustur = new System.Windows.Forms.DateTimePicker();
             this.dtpBaslangicOlustur = new System.Windows.Forms.DateTimePicker();
-            this.btnSil = new System.Windows.Forms.Button();
+            this.btnOlustur = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnIptal = new System.Windows.Forms.Button();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvZimmetListesi)).BeginInit();
             this.tabPage4.SuspendLayout();
@@ -97,7 +103,6 @@
             this.tabControl1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage5
@@ -129,6 +134,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.btnYeniDemirbasOlustur);
             this.tabPage4.Controls.Add(this.dgvDemirbas);
             this.tabPage4.Controls.Add(this.label3);
             this.tabPage4.Controls.Add(this.cmbMalzemeKodu);
@@ -139,6 +145,16 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "DEMİRBAŞ";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btnYeniDemirbasOlustur
+            // 
+            this.btnYeniDemirbasOlustur.Location = new System.Drawing.Point(476, 31);
+            this.btnYeniDemirbasOlustur.Name = "btnYeniDemirbasOlustur";
+            this.btnYeniDemirbasOlustur.Size = new System.Drawing.Size(145, 22);
+            this.btnYeniDemirbasOlustur.TabIndex = 3;
+            this.btnYeniDemirbasOlustur.Text = "Yeni Demirbaş Oluştur";
+            this.btnYeniDemirbasOlustur.UseVisualStyleBackColor = true;
+            this.btnYeniDemirbasOlustur.Click += new System.EventHandler(this.btnYeniDemirbasOlustur_Click);
             // 
             // dgvDemirbas
             // 
@@ -153,6 +169,7 @@
             this.dgvDemirbas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDemirbas.Size = new System.Drawing.Size(615, 354);
             this.dgvDemirbas.TabIndex = 2;
+            this.dgvDemirbas.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvDemirbas_MouseDoubleClick);
             // 
             // label3
             // 
@@ -175,6 +192,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label8);
+            this.tabPage3.Controls.Add(this.btnYeniMalzeme);
             this.tabPage3.Controls.Add(this.dgvMalzeme);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -184,21 +203,44 @@
             this.tabPage3.Text = "MALZEME";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 24);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(298, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "(Silmek ya da Düzenlemek istediğiniz Malzemeye çift tıklayınız)";
+            // 
+            // btnYeniMalzeme
+            // 
+            this.btnYeniMalzeme.Location = new System.Drawing.Point(482, 5);
+            this.btnYeniMalzeme.Name = "btnYeniMalzeme";
+            this.btnYeniMalzeme.Size = new System.Drawing.Size(139, 34);
+            this.btnYeniMalzeme.TabIndex = 1;
+            this.btnYeniMalzeme.Text = "Yeni Malzeme Olustur";
+            this.btnYeniMalzeme.UseVisualStyleBackColor = true;
+            this.btnYeniMalzeme.Click += new System.EventHandler(this.btnYeniMalzeme_Click);
+            // 
             // dgvMalzeme
             // 
+            this.dgvMalzeme.AllowUserToAddRows = false;
+            this.dgvMalzeme.AllowUserToDeleteRows = false;
             this.dgvMalzeme.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMalzeme.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvMalzeme.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMalzeme.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMalzeme.Location = new System.Drawing.Point(3, 3);
+            this.dgvMalzeme.Location = new System.Drawing.Point(3, 40);
             this.dgvMalzeme.MultiSelect = false;
             this.dgvMalzeme.Name = "dgvMalzeme";
+            this.dgvMalzeme.ReadOnly = true;
             this.dgvMalzeme.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMalzeme.Size = new System.Drawing.Size(618, 403);
+            this.dgvMalzeme.Size = new System.Drawing.Size(618, 366);
             this.dgvMalzeme.TabIndex = 0;
+            this.dgvMalzeme.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvMalzeme_MouseDoubleClick);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnPersonelSil);
             this.tabPage2.Controls.Add(this.btnYeniPersonel);
             this.tabPage2.Controls.Add(this.dgvPersonelZimmet);
             this.tabPage2.Controls.Add(this.dgvPersonelDetayBilgi);
@@ -213,6 +255,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "PERSONEL";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnPersonelSil
+            // 
+            this.btnPersonelSil.Location = new System.Drawing.Point(382, 16);
+            this.btnPersonelSil.Name = "btnPersonelSil";
+            this.btnPersonelSil.Size = new System.Drawing.Size(117, 37);
+            this.btnPersonelSil.TabIndex = 8;
+            this.btnPersonelSil.Text = "Seçili Personeli Sil/Düzenle";
+            this.btnPersonelSil.UseVisualStyleBackColor = true;
+            this.btnPersonelSil.Click += new System.EventHandler(this.btnPersonelSil_Click_1);
             // 
             // btnYeniPersonel
             // 
@@ -301,6 +353,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnBolumSilDuzenle);
+            this.tabPage1.Controls.Add(this.btnYeniBolum);
             this.tabPage1.Controls.Add(this.dgvAdres);
             this.tabPage1.Controls.Add(this.dgvBolumDemirbas);
             this.tabPage1.Controls.Add(this.dgvBolumPersonel);
@@ -314,6 +368,26 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "BÖLÜMLER";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnBolumSilDuzenle
+            // 
+            this.btnBolumSilDuzenle.Location = new System.Drawing.Point(100, 66);
+            this.btnBolumSilDuzenle.Name = "btnBolumSilDuzenle";
+            this.btnBolumSilDuzenle.Size = new System.Drawing.Size(87, 40);
+            this.btnBolumSilDuzenle.TabIndex = 7;
+            this.btnBolumSilDuzenle.Text = "Seçili Bölümü Sil/Düzenle";
+            this.btnBolumSilDuzenle.UseVisualStyleBackColor = true;
+            this.btnBolumSilDuzenle.Click += new System.EventHandler(this.btnBolumSilDuzenle_Click);
+            // 
+            // btnYeniBolum
+            // 
+            this.btnYeniBolum.Location = new System.Drawing.Point(11, 65);
+            this.btnYeniBolum.Name = "btnYeniBolum";
+            this.btnYeniBolum.Size = new System.Drawing.Size(87, 41);
+            this.btnYeniBolum.TabIndex = 6;
+            this.btnYeniBolum.Text = "Yeni Bölüm Ekle";
+            this.btnYeniBolum.UseVisualStyleBackColor = true;
+            this.btnYeniBolum.Click += new System.EventHandler(this.btnYeniBolum_Click);
             // 
             // dgvAdres
             // 
@@ -525,11 +599,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtDemirbasOlustur);
+            this.groupBox1.Controls.Add(this.mtxtsicilOlustur);
             this.groupBox1.Controls.Add(this.btnIptal);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.dtpBitisOlustur);
             this.groupBox1.Controls.Add(this.dtpBaslangicOlustur);
-            this.groupBox1.Controls.Add(this.btnSil);
+            this.groupBox1.Controls.Add(this.btnOlustur);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
@@ -540,6 +616,41 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Zimmet Oluştur";
+            // 
+            // txtDemirbasOlustur
+            // 
+            this.txtDemirbasOlustur.Location = new System.Drawing.Point(168, 87);
+            this.txtDemirbasOlustur.Name = "txtDemirbasOlustur";
+            this.txtDemirbasOlustur.Size = new System.Drawing.Size(122, 26);
+            this.txtDemirbasOlustur.TabIndex = 17;
+            // 
+            // mtxtsicilOlustur
+            // 
+            this.mtxtsicilOlustur.Location = new System.Drawing.Point(168, 45);
+            this.mtxtsicilOlustur.Mask = "00000000";
+            this.mtxtsicilOlustur.Name = "mtxtsicilOlustur";
+            this.mtxtsicilOlustur.Size = new System.Drawing.Size(122, 26);
+            this.mtxtsicilOlustur.TabIndex = 16;
+            this.mtxtsicilOlustur.ValidatingType = typeof(int);
+            // 
+            // btnIptal
+            // 
+            this.btnIptal.Location = new System.Drawing.Point(168, 217);
+            this.btnIptal.Name = "btnIptal";
+            this.btnIptal.Size = new System.Drawing.Size(113, 43);
+            this.btnIptal.TabIndex = 15;
+            this.btnIptal.Text = "İPTAL";
+            this.btnIptal.UseVisualStyleBackColor = true;
+            this.btnIptal.Click += new System.EventHandler(this.btnIptal_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(26, 90);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(126, 20);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Demirbaş Kodu :";
             // 
             // dtpBitisOlustur
             // 
@@ -555,14 +666,15 @@
             this.dtpBaslangicOlustur.Size = new System.Drawing.Size(233, 26);
             this.dtpBaslangicOlustur.TabIndex = 0;
             // 
-            // btnSil
+            // btnOlustur
             // 
-            this.btnSil.Location = new System.Drawing.Point(295, 217);
-            this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(106, 43);
-            this.btnSil.TabIndex = 11;
-            this.btnSil.Text = "OLUŞTUR";
-            this.btnSil.UseVisualStyleBackColor = true;
+            this.btnOlustur.Location = new System.Drawing.Point(288, 217);
+            this.btnOlustur.Name = "btnOlustur";
+            this.btnOlustur.Size = new System.Drawing.Size(113, 43);
+            this.btnOlustur.TabIndex = 11;
+            this.btnOlustur.Text = "OLUŞTUR";
+            this.btnOlustur.UseVisualStyleBackColor = true;
+            this.btnOlustur.Click += new System.EventHandler(this.btnOlustur_Click);
             // 
             // label4
             // 
@@ -591,29 +703,6 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Bitiş Tairihi :";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(26, 90);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(126, 20);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Demirbaş Kodu :";
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // btnIptal
-            // 
-            this.btnIptal.Location = new System.Drawing.Point(183, 217);
-            this.btnIptal.Name = "btnIptal";
-            this.btnIptal.Size = new System.Drawing.Size(106, 43);
-            this.btnIptal.TabIndex = 15;
-            this.btnIptal.Text = "İPTAL";
-            this.btnIptal.UseVisualStyleBackColor = true;
-            this.btnIptal.Click += new System.EventHandler(this.btnIptal_Click);
-            // 
             // AnaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -621,6 +710,7 @@
             this.ClientSize = new System.Drawing.Size(632, 435);
             this.Controls.Add(this.tabControl1);
             this.Name = "AnaForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Demirbaş Zimmet Programı";
             this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvZimmetListesi)).EndInit();
@@ -628,6 +718,7 @@
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDemirbas)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMalzeme)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -645,7 +736,6 @@
             this.tabPage6.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -694,13 +784,20 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker dtpBitisOlustur;
         private System.Windows.Forms.DateTimePicker dtpBaslangicOlustur;
-        private System.Windows.Forms.Button btnSil;
+        private System.Windows.Forms.Button btnOlustur;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button btnIptal;
+        private System.Windows.Forms.MaskedTextBox mtxtsicilOlustur;
+        private System.Windows.Forms.TextBox txtDemirbasOlustur;
+        private System.Windows.Forms.Button btnYeniMalzeme;
+        private System.Windows.Forms.Button btnBolumSilDuzenle;
+        private System.Windows.Forms.Button btnYeniBolum;
+        private System.Windows.Forms.Button btnPersonelSil;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnYeniDemirbasOlustur;
     }
 }
 
