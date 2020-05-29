@@ -416,5 +416,11 @@ namespace DemirbasZimmet
 
             #endregion
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            BölümListesi frm = new BölümListesi();
+            frm.ShowDialog();
+        }
     }
 }

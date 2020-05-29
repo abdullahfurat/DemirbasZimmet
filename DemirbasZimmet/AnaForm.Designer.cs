@@ -31,6 +31,7 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.dgvZimmetListesi = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnYeniDemirbasOlustur = new System.Windows.Forms.Button();
             this.dgvDemirbas = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,6 +50,7 @@
             this.cmbSicilNo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.btnBolumSilDuzenle = new System.Windows.Forms.Button();
             this.btnYeniBolum = new System.Windows.Forms.Button();
             this.dgvAdres = new System.Windows.Forms.DataGridView();
@@ -84,7 +86,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvZimmetListesi)).BeginInit();
             this.tabPage4.SuspendLayout();
@@ -147,6 +148,16 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "DEMİRBAŞ";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(153, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(194, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Bütün Demirbaşları Getir";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btnYeniDemirbasOlustur
             // 
@@ -355,6 +366,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.btnBolumSilDuzenle);
             this.tabPage1.Controls.Add(this.btnYeniBolum);
             this.tabPage1.Controls.Add(this.dgvAdres);
@@ -370,6 +382,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "BÖLÜMLER";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(72, 11);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(115, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Bölüm Listesi";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnBolumSilDuzenle
             // 
@@ -705,16 +727,6 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Bitiş Tairihi :";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(153, 31);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Bütün Demirbaşları Getir";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // AnaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -811,6 +823,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnYeniDemirbasOlustur;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
