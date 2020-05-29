@@ -408,5 +408,13 @@ namespace DemirbasZimmet
 
             #endregion
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            #region Demirbas
+            dgvDemirbas.DataSource = Veritabani.SELECTCalistir($"select DemirbaşKodu,DemirbaşAdı,BölümKodu from Demirbaş where DemirbaşDurumu='true'");
+
+            #endregion
+        }
     }
 }

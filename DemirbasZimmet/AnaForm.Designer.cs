@@ -84,6 +84,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvZimmetListesi)).BeginInit();
             this.tabPage4.SuspendLayout();
@@ -134,6 +135,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button1);
             this.tabPage4.Controls.Add(this.btnYeniDemirbasOlustur);
             this.tabPage4.Controls.Add(this.dgvDemirbas);
             this.tabPage4.Controls.Add(this.label3);
@@ -703,6 +705,16 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Bitiş Tairihi :";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(153, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(194, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Bütün Demirbaşları Getir";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // AnaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -798,6 +810,7 @@
         private System.Windows.Forms.Button btnPersonelSil;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnYeniDemirbasOlustur;
+        private System.Windows.Forms.Button button1;
     }
 }
 
